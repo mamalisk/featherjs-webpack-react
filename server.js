@@ -1,15 +1,23 @@
 /* eslint no-console: 0 */
 
 const path = require('path');
-const express = require('express');
+const feathers = require('feathers');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
+const authentication = require('feathers-authentication');
+const hooks = require('feathers-hooks');
+const rest = require('feathers-rest');
+const socketio = require('feathers-socketio');
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = isDeveloping ? 3000 : process.env.PORT;
-const app = express();
+const port = isDeveloping ? 3030 : process.env.PORT;
+const app = feathers()
+            .configure(hooks())
+            .configure(rest())
+            .configure(socketio())
+            .configure(authentication);
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -33,7 +41,7 @@ if (isDeveloping) {
     res.end();
   });
 } else {
-  app.use(express.static(__dirname + '/dist'));
+  app.use(feathers.static(__dirname + '/dist'));
   app.get('*', function response(req, res) {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
