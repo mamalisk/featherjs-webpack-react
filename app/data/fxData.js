@@ -20,7 +20,7 @@ const template = {
   pointHitRadius: 10
 };
 
-const datasets = [
+const defaultDataSets = [
   [65, 59, 80, 81, 56, 55, 40],
   [32, 80, 59, 81, 44, 20, 19],
   [11, 80, 59, 81, 44, 20, 19]
@@ -28,28 +28,15 @@ const datasets = [
 
 const getDataSet = (index) => {
   const dataSet = {...template};
-  dataSet.data = datasets[index];
+  dataSet.data = defaultDataSets[index];
   return dataSet;
 }
 
-
-export const data = [
-  {
-      labels,
-      datasets : [
-        getDataSet(0)
-      ]
-  },
-  {
-      labels,
-      datasets : [
-        getDataSet(1)
-      ]
-  },
-  {
-      labels,
-      datasets : [
-        getDataSet(2)
-      ]
-  },
-];
+export const data = defaultDataSets.map((ds,i)=> {
+   return {
+       labels,
+       datasets : [
+         getDataSet(i)
+       ]
+   }
+});

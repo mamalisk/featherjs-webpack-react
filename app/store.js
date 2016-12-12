@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 import rootReducer from './reducers/index';
 import { data } from './data/fxData';
 
-const fxData = data[1];
+const fxData = data[0];
 
 // create an object for the default data
 const defaultState = {
