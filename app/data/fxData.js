@@ -23,7 +23,7 @@ const template = {
 const defaultDataSets = [
   [65, 59, 80, 81, 56, 55, 40],
   [32, 80, 59, 81, 44, 20, 19],
-  [11, 80, 59, 81, 44, 20, 19]
+  [11, 92, 33, 22, 11, 91, 77]
 ]
 
 const getDataSet = (index) => {
