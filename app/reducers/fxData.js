@@ -1,8 +1,12 @@
+import { createAction } from 'redux-actions';
+import * as Actions from '../actions/actionTypes';
+
 function fxData(state = [], action){
   switch(action.type) {
-    case 'UPDATE_FX_DATA' :
+    case Actions.UPDATE_FX_DATA :
        return [
-
+          ...state,
+          action.payload
        ]
     default:
        return state;
@@ -11,3 +15,5 @@ function fxData(state = [], action){
 }
 
 export default fxData;
+
+export const updateCurrentFxData = createAction(Actions.UPDATE_FX_DATA);
