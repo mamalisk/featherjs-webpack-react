@@ -9,7 +9,7 @@ export default class ChartHeader extends React.Component {
    render() {
      return (
        <div id="header">
-         <h1>Chart Header</h1>
+         <h1>{this.props.title}</h1>
        </div>
      );
    }
