@@ -8,7 +8,7 @@ import store, { history } from './store';
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Application}></Route>
+      <Route path="/pages" component={Application}></Route>
     </Router>
   </Provider>
 )
